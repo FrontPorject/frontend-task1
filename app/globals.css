@@ -5,6 +5,10 @@
 body {
   background-image: url("../public/image/bg.svg");
 }
+input:focus {
+  outline: none !important;
+}
+
 /* :root {
   --background: #ffffff;
   --foreground: #171717;
