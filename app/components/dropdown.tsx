@@ -3,8 +3,7 @@ interface Dropdown {
     setSelect: (value: boolean) => void; 
   }
 export default function Dropdown(props:Dropdown){
-    const {setClicked} = props;
-    const {setSelect} = props;
+    const {setClicked , setSelect} = props;
     return(
     <>
     <div className="absolute w-full top-0 rounded-md bg-white shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">

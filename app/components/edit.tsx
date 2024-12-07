@@ -1,14 +1,41 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Dropdown from "./dropdown";
 interface Edit{
     setAdded : (value: boolean) => void; 
-    clicked : string
+    clicked : string;
+    info: string;
+    setInfo: (value: string) => void;
+    name: string;
+    setName: (value: string) => void;
+    status : string;
     setClicked : (value: string) => void; 
+    setStatus : (value: string) => void;
+    setAllinfo: (value: Array<{ id:number; title: string; description: string; status: string }>) => void;
+    allInfo: Array<{ id:number; title: string; description: string ; status: string }>;
+    editPosition: {id: number; name: string; descript: string; status: string;};
 }
 export default function Edit(props:Edit){
-    const {setAdded , clicked , setClicked} = props;
+    const {setAllinfo,allInfo, setAdded , clicked , setClicked ,editPosition , info , name , status , setStatus , setName , setInfo} = props;
     const [select, setSelect] =  useState<boolean>(false);
+    useEffect(() => {
+        setStatus(clicked);
+      }, [clicked, setStatus]);      
+    const EditChanged = ()=>{
+    setAllinfo(
+        allInfo.map((todo) => {
+          if (todo.id === editPosition.id) {
+            todo.description = info;
+            todo.title = name;
+            todo.status = status;
+          }
+          return todo;
+        })
+      );
+      setAdded(true);
+      setInfo("")
+      setName("")
+    }
     return(
         <>
         <div>
@@ -22,7 +49,7 @@ export default function Edit(props:Edit){
 
 
             <div className="flex gap-4 justify-between items-center">
-                <button className="edit flex items-center flex-row-reverse gap-2 bg-blue px-16 py-6 rounded-md hover:bg-blue-400">
+                <button onClick={EditChanged} className="edit flex items-center flex-row-reverse gap-2 bg-blue px-16 py-6 rounded-md hover:bg-blue-400">
                     <h3 className="text-white">Edit</h3>
                     <Image src="./image/Edit.svg" alt="editForm" width={20} height={20}/>
                 </button>
