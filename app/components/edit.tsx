@@ -42,9 +42,9 @@ export default function Edit(props:Edit){
             <div className="relative">
                 <div className="selected-option relative flex justify-between items-center px-3 py-3 text-base w-full  bg-slate-300 mb-4 rounded-t-md cursor-pointer border-b-2 border-b-blue-500" onClick={()=>setSelect(!select)}>
                     <p className="font-semibold">{clicked}</p>
-                    <Image src="./image/arrow.svg" alt="arrowBtn" width={15} height={15}/>
+                    {status!="Done" && <Image src="./image/arrow.svg" alt="arrowBtn" width={15} height={15}/>}
                 </div>
-                {select && <Dropdown setClicked={setClicked} setSelect = {setSelect}/>}
+                {select && <Dropdown setClicked={setClicked} setSelect = {setSelect} state={status}/>}
             </div>
 
 

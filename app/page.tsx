@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import  "./page.module.css";
-import { TextareaAutosize } from '@mui/base/TextareaAutosize';
+import TextField from '@mui/material/TextField';
 import { useState } from "react";
 import Edit from "./components/edit";
 import Tasks from "./components/tasks";
@@ -15,6 +15,8 @@ export default function Home() {
   const [position, setPosition] = useState<{ id:number ; title: string; description: string ; status:string }[]>([]);
   const [editPosition, setEditPosition] = useState<{id: number; name: string; descript: string; status: string;}>({ id: 0, name: "", descript: "", status: "todo"});
   const [clicked, setClicked] = useState<string>("Todo");
+  const [bordercolor, setBorderColor] = useState(false);
+
   const AddTasks = ()=> {
     if(name.trim()!= "" && info.trim()!= ""){
       setId(id + 1)
@@ -26,27 +28,29 @@ export default function Home() {
     }
 
   return (
-    <div className="mx-24 my-10">
-      <div className="container bg-white mb-8 rounded-lg">
-        <header className="rounded-t-md items-center px-16 py-2 bg-blue">
-          <h1 className="font-semibold text-3xl text-white">Task Management &gt;{add? "Home" : "Edit"}</h1>
+    <div className="md:mx-24 md:my-10 h-screen md:h-0">
+      <div className="bg-white mb-8 rounded-lg">
+        <header className="md:rounded-t-md items-center px-16 py-2 bg-blue">
+          <h1 className="font-semibold text-xl md:text-3xl text-white ">Task Management &gt;{add? " Home" : " Edit"}</h1>
         </header>
         
         <main className="px-16 py-2">
-          <h2 className="font-semibold text-2xl pb-4">{add? "Add" : "Edit"} a new Task</h2>
-          <input value = {name} onChange={e => setName(e.target.value)} className={`font-semibold border-b-2  bg-slate-300 w-full p-4 mb-4 rounded-t-md ${add? "border-b-slate-400" : "border-b-blue-500"}`} placeholder="Title"/>
-          <TextareaAutosize className='bg-slate-300 border-b-2 border-b-slate-400 w-full p-4 mb-4 rounded-t-md font-semibold outline-none'
-                        aria-label="empty textarea"
-                        minRows={6}
-                        maxRows={6}
-                        style={{resize: 'none'}}
+          <h2 className="font-semibold text-lg md:text-2xl pb-4">{add? "Add a new" : "Edit"} Task</h2>
+          <TextField value = {name} onClick={() => setBorderColor((prev) => !prev)}  onChange={e => setName(e.target.value)} className={`font-semibold  bg-slate-300 w-full mb-4 rounded-t-md `} id="filled-basic" label="Title" variant="filled"/>
+        
+          <TextField className={`bg-slate-300  border-b-slate-400 w-full  mb-4 rounded-t-md font-semibold outline-none ${ bordercolor ? "border-b-slate-400" : "border-b-blue-500"}`}
+                        rows={add ? 6 : 12}
+                        id="filled-multiline-static"
+                        variant="filled"
+                        multiline
                         placeholder="Description"
                         onChange={e => setInfo(e.target.value)} 
                         value = {info}
-                        />
+                        onClick={() => setBorderColor((prev) => !prev)}
+            />
                       
           {add && <div onClick={AddTasks} className="bg-blue w-full p-4 flex items-center justify-center flex-row-reverse gap-4 text-white mb-2 rounded-lg hover:bg-blue-400 cursor-pointer">
-           <button className="font-medium text-xl cursor-pointer">Add</button>
+           <button className="font-medium text-lg md:text-xl cursor-pointer">Add</button>
            <Image src="./image/plus.svg" alt="plus-img" width={20} height={20}/>
           </div>}
           {!add && <Edit setAdded={setAdded} clicked={clicked} setClicked={setClicked} setAllinfo = {setPosition} allInfo = {position} editPosition={editPosition} info={info} name={name} status={state} setStatus={setState} setInfo={setInfo} setName={setName} />}
@@ -54,14 +58,20 @@ export default function Home() {
         </main>
         
       </div>
-      {add && <footer className="bg-blue rounded-lg">
-        <header className="flex justify-between items-center px-16 py-2 bg-blue rounded-t-md">
-            <h1 className="font-semibold text-3xl text-white">Tasks</h1>
+      {add && <footer className="bg-blue rounded-lg h-full">
+        <header className="flex justify-between items-center px-16 py-6 bg-blue md:rounded-t-md rounded-t-full ">
+            <h1 className="font-semibold text-2xl md:text-3xl text-white">Tasks</h1>
         </header>
-        <section className="bg-blue-300 p-4 flex flex-col gap-4 rounded-b-lg">
-          {position.length == 0 && <div className="flex justify-center text-2xl p-10">You have nothing to do. Go get some sleep.</div>}
+        <div className={`bg-blue-300 h-full md:h-auto rounded-t-3xl flex flex-col ${position.length==0? "justify-center":""}`}>
+        <section className={`bg-blue-300 md:flex rounded-t-full md:rounded-t-none p-4  md:flex-col gap-4 rounded-b-lg ${position.length==0? "flex justify-center":"grid grid-cols-2"}`}>
+
+          {position.length == 0 && <div className="flex flex-col justify-center text-4xl md:text-2xl p-10 items-center">
+            <p>You have nothing to do.</p>
+            <p>Go get some sleep.</p>
+            </div>}
           <Tasks allInfo = {position} setAdded={setAdded} setEditPosition={setEditPosition} setInfo={setInfo} setName={setName} setClicked={setClicked}/>
         </section>
+        </div>
       </footer>}
 
     </div>
