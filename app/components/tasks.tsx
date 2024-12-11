@@ -20,10 +20,10 @@ export default function Tasks(props:Task){
             <p className="break-all line-clamp-3 ">{pos.description}</p>
           </div>
           <div className="flex justify-between md:justify-end md:gap-8 ">
-            <h3 className="text-lg bg-blue text-white rounded-xl px-6 py-2">{pos.status}</h3>
+            <h3 className="sm:text-lg text-xs font-bold bg-blue text-white rounded-xl px-6 py-2">{pos.status}</h3>
             <button onClick={()=>{setAdded(false) ; setClicked(pos.status) ;setInfo(pos.description); setName(pos.title) ;setEditPosition({id:pos.id, name: pos.title, descript: pos.description , status:pos.status})
-          }}>
-            <Image src="./image/Edit.svg" alt="edit-form" width={20} height={20}/>
+           }} disabled={pos.status == "Done"}>
+            <Image className={`opacity-${pos.status == "Done" ? "45" : "1"}`}  src="./image/Edit.svg" alt="edit-form" width={20} height={20}/>
             </button>
           </div>
           </div>

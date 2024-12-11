@@ -30,15 +30,15 @@ export default function Home() {
   return (
     <div className="md:mx-24 md:my-10 h-screen md:h-0">
       <div className="bg-white mb-8 rounded-lg">
-        <header className="md:rounded-t-md items-center px-16 py-2 bg-blue">
+        <header className="md:rounded-t-md items-center px-6 md:px-16 py-2 bg-blue">
           <h1 className="font-semibold text-xl md:text-3xl text-white ">Task Management &gt;{add? " Home" : " Edit"}</h1>
         </header>
         
-        <main className="px-16 py-2">
+        <main className="px-6 md:px-16 py-2">
           <h2 className="font-semibold text-lg md:text-2xl pb-4">{add? "Add a new" : "Edit"} Task</h2>
           <TextField value = {name} onClick={() => setBorderColor((prev) => !prev)}  onChange={e => setName(e.target.value)} className={`font-semibold  bg-slate-300 w-full mb-4 rounded-t-md `} id="filled-basic" label="Title" variant="filled"/>
         
-          <TextField className={`bg-slate-300  border-b-slate-400 w-full  mb-4 rounded-t-md font-semibold outline-none ${ bordercolor ? "border-b-slate-400" : "border-b-blue-500"}`}
+          <TextField className={`bg-slate-300  border-b-slate-400 w-full mb-4 rounded-t-md font-semibold outline-none ${ bordercolor ? "border-b-slate-400" : "border-b-blue-500"}`}
                         rows={add ? 6 : 20}
                         id="filled-multiline-static"
                         variant="filled"
@@ -59,7 +59,7 @@ export default function Home() {
         
       </div>
       {add && <footer className="bg-blue rounded-lg h-full">
-        <header className="flex justify-between items-center px-16 py-6 bg-blue md:rounded-t-md rounded-t-full ">
+        <header className="flex justify-between items-center px-6 md:px-16 py-6 bg-blue md:rounded-t-md rounded-t-full ">
             <h1 className="font-semibold text-2xl md:text-3xl text-white">Tasks</h1>
         </header>
         <div className={`bg-lightBlue h-full md:h-auto rounded-t-3xl flex flex-col ${position.length==0? "justify-center":""}`}>

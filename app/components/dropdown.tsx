@@ -12,7 +12,7 @@ export default function Dropdown(props:Dropdown){
         {state!="Done" && <p onClick={()=>{setSelect(false) ; setClicked("inQA")}} className="hover:bg-slate-300 px-3 py-3 ">inQA</p>}
         {(state=="inQA" || state=="InProgress") && <p onClick={()=>{setSelect(false) ; setClicked("Done")}} className="hover:bg-slate-300 px-3 py-3 ">Done</p>}
         {(state=="inQA" || state=="Todo") &&<p onClick={()=>{setSelect(false) ; setClicked("Todo")}} className="hover:bg-slate-300 px-3 py-3 ">ToDo</p>}
-        {(state=="Todo" || state=="InProgress") &&<p onClick={()=>{setSelect(false) ; setClicked("InProgress")}} className="hover:bg-slate-300 px-3 py-3 ">InProgress</p>}
+        {(state=="Todo" || state=="InProgress") &&<p onClick={()=>{setSelect(false) ; setClicked(`InProgress`)}} className="hover:bg-slate-300 px-3 py-3">InProgress</p>}
     </div>
     </>
     )

@@ -48,12 +48,12 @@ export default function Edit(props:Edit){
             </div>
 
 
-            <div className="flex gap-4 justify-between items-center">
-                <button onClick={EditChanged} className="edit flex items-center flex-row-reverse gap-2 bg-blue px-16 py-6 rounded-md hover:bg-lightBlue">
+            <div className="flex justify-between items-center">
+                <button onClick={EditChanged} className="edit flex items-center flex-row-reverse gap-2 bg-blue md:px-16 px-8 py-6 rounded-md hover:bg-lightBlue">
                     <h3 className="text-white">Edit</h3>
                     <Image src="./image/Editwhite.svg" alt="editForm" width={20} height={20}/>
                 </button>
-                <button onClick={()=>{setAdded(true)}} className="cancel flex items-center flex-row-reverse gap-2 px-16 py-6 rounded-md border-slate-300 border-2">
+                <button onClick={()=>{setAdded(true)}} className="cancel flex items-center flex-row-reverse gap-2 md:px-16 px-8 py-6 rounded-md border-slate-300 border-2">
                     <h3 className="text-slate-400">Cancel</h3>
                 </button>
             </div>
