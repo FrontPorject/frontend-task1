@@ -4,6 +4,7 @@ interface Dropdown {
     state : string;
   }
 export default function Dropdown(props:Dropdown){
+    
     const {setClicked , setSelect , state} = props;
     return(
     <>

@@ -39,7 +39,7 @@ export default function Home() {
           <TextField value = {name} onClick={() => setBorderColor((prev) => !prev)}  onChange={e => setName(e.target.value)} className={`font-semibold  bg-slate-300 w-full mb-4 rounded-t-md `} id="filled-basic" label="Title" variant="filled"/>
         
           <TextField className={`bg-slate-300  border-b-slate-400 w-full  mb-4 rounded-t-md font-semibold outline-none ${ bordercolor ? "border-b-slate-400" : "border-b-blue-500"}`}
-                        rows={add ? 6 : 12}
+                        rows={add ? 6 : 20}
                         id="filled-multiline-static"
                         variant="filled"
                         multiline
@@ -62,9 +62,8 @@ export default function Home() {
         <header className="flex justify-between items-center px-16 py-6 bg-blue md:rounded-t-md rounded-t-full ">
             <h1 className="font-semibold text-2xl md:text-3xl text-white">Tasks</h1>
         </header>
-        <div className={`bg-blue-300 h-full md:h-auto rounded-t-3xl flex flex-col ${position.length==0? "justify-center":""}`}>
-        <section className={`bg-blue-300 md:flex rounded-t-full md:rounded-t-none p-4  md:flex-col gap-4 rounded-b-lg ${position.length==0? "flex justify-center":"grid grid-cols-2"}`}>
-
+        <div className={`bg-lightBlue h-full md:h-auto rounded-t-3xl flex flex-col ${position.length==0? "justify-center":""}`}>
+        <section className={`bg-lightBlue md:flex rounded-t-full md:rounded-t-none p-4  md:flex-col gap-4 rounded-b-lg ${position.length==0? "flex justify-center":"grid grid-cols-2"}`}>
           {position.length == 0 && <div className="flex flex-col justify-center text-4xl md:text-2xl p-10 items-center">
             <p>You have nothing to do.</p>
             <p>Go get some sleep.</p>

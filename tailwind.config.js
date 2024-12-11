@@ -11,6 +11,10 @@ module.exports = {
         blue: {
           DEFAULT: "#3873B4",
         },
+        lightBlue:{
+          DEFAULT : "#ABCDEA",
+        }
+
       },
     },
 
