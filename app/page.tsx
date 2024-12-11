@@ -64,7 +64,7 @@ export default function Home() {
         </header>
         <div className={`bg-lightBlue h-full md:h-auto rounded-t-3xl flex flex-col ${position.length==0? "justify-center":""}`}>
         <section className={`bg-lightBlue md:flex rounded-t-full md:rounded-t-none p-4  md:flex-col gap-4 rounded-b-lg ${position.length==0? "flex justify-center":"grid grid-cols-2"}`}>
-          {position.length == 0 && <div className="flex flex-col justify-center text-4xl md:text-2xl p-10 items-center">
+          {position.length == 0 && <div className="flex flex-col justify-center text-2xl p-10 items-center">
             <p>You have nothing to do.</p>
             <p>Go get some sleep.</p>
             </div>}
